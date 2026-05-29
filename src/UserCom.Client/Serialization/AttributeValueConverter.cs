@@ -37,7 +37,7 @@ namespace UserCom.Serialization
             else if (Regex.IsMatch(strValue, ArrayRegex))
             {
                 var arrayStr = strValue.Substring(1, strValue.Length - 2);
-                var arrayValue = arrayStr.Split(',').Select(s => s.Trim('"'));
+                var arrayValue = arrayStr.Split(',').Select(s => s.Trim().Trim('"'));
 
                 serializer.Serialize(writer, arrayValue);
             }
