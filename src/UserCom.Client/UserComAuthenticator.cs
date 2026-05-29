@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Net.Http;
 
 namespace UserCom
@@ -20,7 +21,7 @@ namespace UserCom
             }
 
             InnerHandler = new HttpClientHandler();
-            ServiceUri = new Uri(string.Format(apiUrl, account));
+            ServiceUri = new Uri(string.Format(CultureInfo.InvariantCulture, apiUrl, account));
         }
 
         public virtual Uri ServiceUri { get; }

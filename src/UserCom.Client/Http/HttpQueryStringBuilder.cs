@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace UserCom.Http
@@ -25,7 +26,7 @@ namespace UserCom.Http
 
         public void Add(string key, bool value) => Add(key, value ? "true" : "false");
 
-        public void Add<T>(string key, T value) where T : IConvertible => Add(key, (string)Convert.ChangeType(value, typeof(string)));
+        public void Add<T>(string key, T value) where T : IConvertible => Add(key, (string)Convert.ChangeType(value, typeof(string), CultureInfo.InvariantCulture));
 
         public QueryString BuildQuery(bool sortKeys = true, string? collateKeysBy = null)
         {
