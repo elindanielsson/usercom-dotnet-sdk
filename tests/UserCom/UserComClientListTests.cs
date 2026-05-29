@@ -70,7 +70,7 @@ namespace Tests.UserCom
 
                 Assert.DoesNotThrow(() =>
                 {
-                    var next = initial.Next.Value;
+                    _ = initial.Next.Value;
                 });
 
                 handler.Protected().Verify(
