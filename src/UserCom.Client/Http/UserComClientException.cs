@@ -6,11 +6,11 @@ namespace UserCom.Http
 {
     public class UserComClientException : Exception
     {
-        public HttpMethod Method { get; }
-        public string RequestUri { get; }
+        public HttpMethod? Method { get; }
+        public string? RequestUri { get; }
         public HttpStatusCode StatusCode { get; }
-        public string ReasonPhrase { get; }
-        public string ErrorMessage { get; }
+        public string? ReasonPhrase { get; }
+        public string? ErrorMessage { get; }
 
         public UserComClientException() { }
 
