@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using UserCom.Model.CRM;
 using UserCom.Model.CRM.Requests;
 
+// Explicit interface implementation is intentional: multiple interfaces on UserComClient share method names
+// (e.g. DeleteAsync, GetAllAsync) with identical signatures but different semantics. Implicit implementation
+// would cause compile-time ambiguity that cannot be resolved with public methods alone.
+#pragma warning disable S4039
 namespace UserCom
 {
     public partial class UserComClient : IUserComCustomIdCrmClient
@@ -63,3 +67,4 @@ namespace UserCom
         }
     }
 }
+#pragma warning restore S4039

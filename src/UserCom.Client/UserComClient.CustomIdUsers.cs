@@ -7,6 +7,10 @@ using UserCom.Model.Segments;
 using UserCom.Model.Users;
 using UserCom.Model.Users.Requests;
 
+// Explicit interface implementation is intentional: multiple interfaces on UserComClient share method names
+// (e.g. DeleteAsync, GetAllAsync) with identical signatures but different semantics. Implicit implementation
+// would cause compile-time ambiguity that cannot be resolved with public methods alone.
+#pragma warning disable S4039
 namespace UserCom
 {
     public partial class UserComClient : IUserComCustomIdUsersClient
@@ -153,3 +157,4 @@ namespace UserCom
         }
     }
 }
+#pragma warning restore S4039
