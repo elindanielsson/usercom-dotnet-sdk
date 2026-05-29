@@ -8,10 +8,15 @@ namespace UserCom.Model.Users.Requests
 {
     public class UpdateOrCreateUserRequest
     {
+        public const int CityMaxLength = 64;
+        public const int FirstNameMaxLength = 40;
+        public const int LastNameMaxLength = 40;
+        public const int PhoneNumberMaxLength = 64;
+
         [JsonProperty("assigned_to")]
         public int? AssignedTo { get; set; }
 
-        [JsonProperty("city"), JsonConverter(typeof(StringValueMaxLengthConverter), 64)]
+        [JsonProperty("city"), JsonConverter(typeof(StringValueMaxLengthConverter), CityMaxLength)]
         public string? City { get; set; }
 
         [JsonProperty("company_id")]
@@ -26,7 +31,7 @@ namespace UserCom.Model.Users.Requests
         [JsonProperty("facebook_url")]
         public string? FacebookUrl { get; set; }
 
-        [JsonProperty("first_name"), JsonConverter(typeof(StringValueMaxLengthConverter), 40)]
+        [JsonProperty("first_name"), JsonConverter(typeof(StringValueMaxLengthConverter), FirstNameMaxLength)]
         public string? FirstName { get; set; }
 
         [JsonProperty("gender")]
@@ -38,7 +43,7 @@ namespace UserCom.Model.Users.Requests
         [JsonProperty("gravatar_url")]
         public string? GravatarUrl { get; set; }
 
-        [JsonProperty("last_name"), JsonConverter(typeof(StringValueMaxLengthConverter), 40)]
+        [JsonProperty("last_name"), JsonConverter(typeof(StringValueMaxLengthConverter), LastNameMaxLength)]
         public string? LastName { get; set; }
 
         [JsonProperty("linkedin_url")]
@@ -47,7 +52,7 @@ namespace UserCom.Model.Users.Requests
         [JsonProperty("notifications")]
         public bool? Notifications { get; set; }
 
-        [JsonProperty("phone_number"), JsonConverter(typeof(StringValueMaxLengthConverter), 64)]
+        [JsonProperty("phone_number"), JsonConverter(typeof(StringValueMaxLengthConverter), PhoneNumberMaxLength)]
         public string? PhoneNumber { get; set; }
 
         [JsonProperty("region")]

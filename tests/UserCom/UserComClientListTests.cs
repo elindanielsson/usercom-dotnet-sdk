@@ -19,6 +19,7 @@ namespace Tests.UserCom
         [TestFixture]
         public class PaginatedResult_Next
         {
+            private const int ExpectedSendAsyncCallCount = 2;
             [Test, CustomAutoData]
             public async Task PaginatedResult_Next_does_not_throw_if_nextUrl_from_userCom_throws_404(
                 Mock<HttpMessageHandler> handler,
@@ -86,7 +87,7 @@ namespace Tests.UserCom
 
                 handler.Protected().Verify(
                     "SendAsync",
-                    Times.Exactly(2),
+                    Times.Exactly(ExpectedSendAsyncCallCount),
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>());
             }

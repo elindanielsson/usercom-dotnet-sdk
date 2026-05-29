@@ -13,6 +13,7 @@ namespace Tests.UserCom.Serialization
         [TestFixture]
         public class UserAttributeTests
         {
+            private const float FloatDecimalDivisor = 10f;
             [Test, CustomAutoData]
             public void String_attribute_value_can_be_deserialized(string value)
             {
@@ -113,7 +114,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void Float_attribute_value_can_be_deserialized(float value)
             {
-                value /= 10;
+                value /= FloatDecimalDivisor;
                 var strValue = value.ToString(CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":{strValue}}}]}}";
@@ -132,7 +133,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void Float_attribute_value_can_be_serialized(float value)
             {
-                value /= 10;
+                value /= FloatDecimalDivisor;
                 var strValue = value.ToString(CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":{strValue}}}]}}";

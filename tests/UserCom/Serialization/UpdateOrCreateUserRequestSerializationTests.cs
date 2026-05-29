@@ -61,7 +61,7 @@ public class UpdateOrCreateUserRequestSerializationTests
     {
         protected override string GetJsonStr(string value) => $"{{\"first_name\":\"{value}\"}}";
 
-        protected override int MaxLength => 40;
+        protected override int MaxLength => UpdateOrCreateUserRequest.FirstNameMaxLength;
 
         protected override string GetValue(UpdateOrCreateUserRequest obj) => obj.FirstName;
 
@@ -73,7 +73,7 @@ public class UpdateOrCreateUserRequestSerializationTests
     {
         protected override string GetJsonStr(string value) => $"{{\"last_name\":\"{value}\"}}";
 
-        protected override int MaxLength => 40;
+        protected override int MaxLength => UpdateOrCreateUserRequest.LastNameMaxLength;
 
         protected override string GetValue(UpdateOrCreateUserRequest obj) => obj.LastName;
 
@@ -85,7 +85,7 @@ public class UpdateOrCreateUserRequestSerializationTests
     {
         protected override string GetJsonStr(string value) => $"{{\"city\":\"{value}\"}}";
 
-        protected override int MaxLength => 64;
+        protected override int MaxLength => UpdateOrCreateUserRequest.CityMaxLength;
 
         protected override string GetValue(UpdateOrCreateUserRequest obj) => obj.City;
 
@@ -97,7 +97,7 @@ public class UpdateOrCreateUserRequestSerializationTests
     {
         protected override string GetJsonStr(string value) => $"{{\"phone_number\":\"{value}\"}}";
 
-        protected override int MaxLength => 64;
+        protected override int MaxLength => UpdateOrCreateUserRequest.PhoneNumberMaxLength;
 
         protected override string GetValue(UpdateOrCreateUserRequest obj) => obj.PhoneNumber;
 
