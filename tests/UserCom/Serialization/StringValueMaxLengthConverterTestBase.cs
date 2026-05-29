@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using AutoFixture;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -20,17 +21,13 @@ public abstract class StringValueMaxLengthConverterTestBase<TType> where TType :
 
     private static string GenerateString(IFixture fixture, int length)
     {
-        var s = string.Empty;
-        while (s.Length < length)
+        var sb = new StringBuilder();
+        while (sb.Length < length)
         {
-            s += fixture.Create<string>();
-        }
-        if (s.Length > length)
-        {
-            s = s[..length];
+            sb.Append(fixture.Create<string>());
         }
 
-        return s;
+        return sb.Length > length ? sb.ToString(0, length) : sb.ToString();
     }
 
     [Test, CustomAutoData]
