@@ -21,7 +21,7 @@ namespace UserCom
 
         public static (string key, string value) ToQueryParam(this CustomAttributeFilter filter)
         {
-            return ($"{filter.Name}{CustomAttributeLookupSuffixes[filter.Lookup]}", filter.Value.ToString());
+            return ($"{filter.Name}{CustomAttributeLookupSuffixes[filter.Lookup]}", System.Convert.ToString(filter.Value, System.Globalization.CultureInfo.InvariantCulture)!);
         }
 
         public static (string key, string value) ToQueryParam(this UserFilter filter)
