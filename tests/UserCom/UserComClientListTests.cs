@@ -25,8 +25,8 @@ namespace Tests.UserCom
                 Mock<HttpMessageHandler> handler,
                 string account)
             {
-                var listAllUrl = $"{ListResource}/";
-                var nextUrl = $"{ListResource}?cursor=101";
+                const string listAllUrl = ListResource + "/";
+                const string nextUrl = ListResource + "?cursor=101";
                 
                 // Initial request in GetAllAsync
                 handler.Protected()
@@ -97,8 +97,8 @@ namespace Tests.UserCom
                 Mock<HttpMessageHandler> handler,
                 string account)
             {
-                var listAllUrl = $"{ListResource}/";
-                var nextUrl = $"{ListResource}?cursor=101";
+                const string listAllUrl = ListResource + "/";
+                const string nextUrl = ListResource + "?cursor=101";
 
                 // Initial request in GetAllAsync
                 handler.Protected()

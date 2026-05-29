@@ -48,7 +48,7 @@ public abstract class StringValueMaxLengthConverterTestBase<TType> where TType :
     public void Empty_object_can_be_deserialized(
         IFixture fixture)
     {
-        var objStr = "{}";
+        const string objStr = "{}";
 
         var result = JsonConvert.DeserializeObject<TType>(objStr, UserComClient.SerializerSettings);
 
