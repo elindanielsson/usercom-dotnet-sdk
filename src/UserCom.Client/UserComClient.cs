@@ -45,11 +45,11 @@ namespace UserCom
                     }
                     catch (UserComClientException clientException) when (clientException.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
-                        return new PaginatedResult<T>() { Results = Array.Empty<T>() };
+                        return new PaginatedResult<T> { Results = Array.Empty<T>() };
                     }
                     catch (AggregateException aggregateException) when (aggregateException.InnerException is UserComClientException { StatusCode: System.Net.HttpStatusCode.NotFound })
                     {
-                        return new PaginatedResult<T>() { Results = Array.Empty<T>() };
+                        return new PaginatedResult<T> { Results = Array.Empty<T>() };
                     }
                 });
             }
