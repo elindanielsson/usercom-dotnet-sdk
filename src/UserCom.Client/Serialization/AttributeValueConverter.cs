@@ -36,8 +36,8 @@ namespace UserCom.Serialization
             }
             else if (Regex.IsMatch(strValue, ArrayRegex))
             {
-                var arrayStr = strValue.Replace("[", "").Replace("]", "");
-                var arrayValue = arrayStr.Split(',').Select(s => s.Replace("\"", ""));
+                var arrayStr = strValue.Substring(1, strValue.Length - 2);
+                var arrayValue = arrayStr.Split(',').Select(s => s.Trim('"'));
 
                 serializer.Serialize(writer, arrayValue);
             }
