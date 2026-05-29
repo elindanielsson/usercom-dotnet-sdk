@@ -19,20 +19,17 @@ namespace UserCom.NetCore.Setup
         }
     }
 
-    public static class UserComConfiguratorExtensions
+    public class UserComConfigurator
     {
-        public static void UseToken(this UserComConfigurator configurator, string appName, string token)
+        private readonly List<Action<IServiceCollection>> _configurations = new List<Action<IServiceCollection>>();
+
+        public void UseToken(string appName, string token)
         {
-            configurator.AddConfiguration(services =>
+            AddConfiguration(services =>
             {
                 services.AddSingleton<UserComAuthenticator, TokenUserComAuthenticator>(x => new TokenUserComAuthenticator(appName, token));
             });
         }
-    }
-
-    public class UserComConfigurator
-    {
-        private readonly List<Action<IServiceCollection>> _configurations = new List<Action<IServiceCollection>>();
 
         public void AddConfiguration(Action<IServiceCollection> configurationAction)
         {
