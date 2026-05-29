@@ -215,7 +215,7 @@ namespace UserCom
         {
             if (request.Id == default)
             {
-                throw new ArgumentException($"{nameof(request.Id)} is missing or invalid in request");
+                throw new ArgumentException($"{nameof(request.Id)} is missing or invalid", nameof(request));
             }
 
             var result = await SendAsync<UpdateUserRequest, User>(HttpMethod.Put, $"{USER_RESOURCE}/{request.Id}/", request);

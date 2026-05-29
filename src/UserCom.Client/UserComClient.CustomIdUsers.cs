@@ -144,7 +144,7 @@ namespace UserCom
         {
             if(string.IsNullOrWhiteSpace(request.UserId))
             {
-                throw new ArgumentException($"{nameof(request.UserId)} is missing or invalid in request");
+                throw new ArgumentException($"{nameof(request.UserId)} is missing or invalid", nameof(request));
             }
 
             var result = await SendAsync<UpdateCustomIdUserRequest, User>(HttpMethod.Put, $"{CUSTOMIDUSER_RESOURCE}/{request.UserId}/", request);

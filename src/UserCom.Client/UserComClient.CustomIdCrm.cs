@@ -54,7 +54,7 @@ namespace UserCom
         {
             if (string.IsNullOrWhiteSpace(request.CompanyId))
             {
-                throw new ArgumentException($"{nameof(request.CompanyId)} is missing or invalid in request");
+                throw new ArgumentException($"{nameof(request.CompanyId)} is missing or invalid", nameof(request));
             }
 
             var result = await SendAsync<Company>(HttpMethod.Put, $"{CUSTOMIDCOMPANY_RESOURCE}/{request.CompanyId}/");
