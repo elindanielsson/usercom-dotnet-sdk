@@ -19,6 +19,7 @@ namespace Tests.UserCom
         [TestFixture]
         public class PaginatedResult_Next
         {
+            private const string SendAsyncMethodName = "SendAsync";
             private const int ExpectedSendAsyncCallCount = 2;
             [Test, CustomAutoData]
             public async Task PaginatedResult_Next_does_not_throw_if_nextUrl_from_userCom_throws_404(
@@ -31,7 +32,7 @@ namespace Tests.UserCom
                 // Initial request in GetAllAsync
                 handler.Protected()
                     .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
+                        SendAsyncMethodName,
                         ItExpr.Is<HttpRequestMessage>(m => m.RequestUri.PathAndQuery.Equals(listAllUrl)),
                         ItExpr.IsAny<CancellationToken>())
                     .ReturnsAsync(() => new HttpResponseMessage
@@ -49,7 +50,7 @@ namespace Tests.UserCom
                 // "Next" request
                 handler.Protected()
                     .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
+                        SendAsyncMethodName,
                         ItExpr.Is<HttpRequestMessage>(m => m.RequestUri.PathAndQuery.Equals(nextUrl)),
                         ItExpr.IsAny<CancellationToken>())
                     .ReturnsAsync(() => new HttpResponseMessage
@@ -74,19 +75,19 @@ namespace Tests.UserCom
                 });
 
                 handler.Protected().Verify(
-                    "SendAsync",
+                    SendAsyncMethodName,
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get && req.RequestUri.PathAndQuery.Equals(listAllUrl)),
                     ItExpr.IsAny<CancellationToken>());
 
                 handler.Protected().Verify(
-                   "SendAsync",
+                   SendAsyncMethodName,
                    Times.Once(),
                    ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get && req.RequestUri.PathAndQuery.Equals(nextUrl)),
                    ItExpr.IsAny<CancellationToken>());
 
                 handler.Protected().Verify(
-                    "SendAsync",
+                    SendAsyncMethodName,
                     Times.Exactly(ExpectedSendAsyncCallCount),
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>());
@@ -103,7 +104,7 @@ namespace Tests.UserCom
                 // Initial request in GetAllAsync
                 handler.Protected()
                     .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
+                        SendAsyncMethodName,
                         ItExpr.Is<HttpRequestMessage>(m => m.RequestUri.PathAndQuery.Equals(listAllUrl)),
                         ItExpr.IsAny<CancellationToken>())
                     .ReturnsAsync(() => new HttpResponseMessage
@@ -121,7 +122,7 @@ namespace Tests.UserCom
                 // "Next" request
                 handler.Protected()
                     .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
+                        SendAsyncMethodName,
                         ItExpr.Is<HttpRequestMessage>(m => m.RequestUri.PathAndQuery.Equals(nextUrl)),
                         ItExpr.IsAny<CancellationToken>())
                     .ReturnsAsync(() => new HttpResponseMessage
