@@ -19,6 +19,6 @@ namespace UserCom.Model.Users
         public string EventType { get; set; }
 
         [JsonProperty("custom_data")]
-        public Dictionary<string, object> CustomData { get; set; }
+        public Dictionary<string, object> CustomData { get; private set; }
     }
 }
