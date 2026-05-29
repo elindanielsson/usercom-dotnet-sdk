@@ -21,13 +21,14 @@ namespace Tests.UserCom
         {
             private const string SendAsyncMethodName = "SendAsync";
             private const int ExpectedSendAsyncCallCount = 2;
+            private const string NextPageCursor = "?cursor=101";
             [Test, CustomAutoData]
             public async Task PaginatedResultNext_does_not_throw_if_nextUrl_from_userCom_throws_404(
                 Mock<HttpMessageHandler> handler,
                 string account)
             {
                 const string listAllUrl = ListResource + "/";
-                const string nextUrl = ListResource + "?cursor=101";
+                const string nextUrl = ListResource + NextPageCursor;
                 
                 // Initial request in GetAllAsync
                 handler.Protected()
@@ -99,7 +100,7 @@ namespace Tests.UserCom
                 string account)
             {
                 const string listAllUrl = ListResource + "/";
-                const string nextUrl = ListResource + "?cursor=101";
+                const string nextUrl = ListResource + NextPageCursor;
 
                 // Initial request in GetAllAsync
                 handler.Protected()

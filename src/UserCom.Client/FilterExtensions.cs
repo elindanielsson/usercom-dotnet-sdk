@@ -5,7 +5,7 @@ namespace UserCom
 {
     public static class FilterExtensions
     {
-        private static readonly Dictionary<CustomAttributeLookup, string> CustomAttributeLookupSuffixes = new Dictionary<CustomAttributeLookup, string>()
+        private static readonly Dictionary<CustomAttributeLookup, string> CustomAttributeLookupSuffixes = new Dictionary<CustomAttributeLookup, string>
         {
             [CustomAttributeLookup.Contains] = "__contains",
             [CustomAttributeLookup.ContainsCaseInsensitive] = "__icontains",
