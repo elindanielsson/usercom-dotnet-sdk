@@ -9,6 +9,7 @@ namespace UserCom.Serialization
     public class AttributeValueConverter : JsonConverter
     {
         private const string ArrayRegex = @"^\[.*\]$";
+        private const string DateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -52,7 +53,7 @@ namespace UserCom.Serialization
 
             if (value is DateTime dateTimeValue)
             {
-                return dateTimeValue.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture);
+                return dateTimeValue.ToString(DateTimeFormat, CultureInfo.InvariantCulture);
             }
 
             if (value is bool boolValue)

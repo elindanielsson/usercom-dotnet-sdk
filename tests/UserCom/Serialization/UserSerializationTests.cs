@@ -14,6 +14,8 @@ namespace Tests.UserCom.Serialization
         public class UserAttributeTests
         {
             private const float FloatDecimalDivisor = 10f;
+            private const string DateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
+            private const string DateFormat = "yyyy-MM-dd";
             [Test, CustomAutoData]
             public void String_attribute_value_can_be_deserialized(string value)
             {
@@ -151,7 +153,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void DateTime_attribute_value_can_be_deserialized(DateTime value)
             {
-                var strValue = value.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture);
+                var strValue = value.ToString(DateTimeFormat, CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":\"{strValue}\"}}]}}";
 
@@ -169,7 +171,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void DateTime_attribute_value_can_be_serialized(DateTime value)
             {
-                var strValue = value.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture);
+                var strValue = value.ToString(DateTimeFormat, CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":\"{strValue}\"}}]}}";
 
@@ -186,7 +188,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void Date_attribute_value_can_be_deserialized(DateTime value)
             {
-                var strValue = value.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var strValue = value.Date.ToString(DateFormat, CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":\"{strValue}\"}}]}}";
 
@@ -204,7 +206,7 @@ namespace Tests.UserCom.Serialization
             [Test, CustomAutoData]
             public void Date_attribute_value_can_be_serialized(DateTime value)
             {
-                var strValue = value.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var strValue = value.Date.ToString(DateFormat, CultureInfo.InvariantCulture);
 
                 var userStr = $"{{\"attributes\":[{{\"value\":\"{strValue}\"}}]}}";
 
