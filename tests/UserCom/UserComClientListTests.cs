@@ -17,12 +17,12 @@ namespace Tests.UserCom
         private const string ListResource = "/api/public/lists";
 
         [TestFixture]
-        public class PaginatedResult_Next
+        public class PaginatedResultNext
         {
             private const string SendAsyncMethodName = "SendAsync";
             private const int ExpectedSendAsyncCallCount = 2;
             [Test, CustomAutoData]
-            public async Task PaginatedResult_Next_does_not_throw_if_nextUrl_from_userCom_throws_404(
+            public async Task PaginatedResultNext_does_not_throw_if_nextUrl_from_userCom_throws_404(
                 Mock<HttpMessageHandler> handler,
                 string account)
             {
@@ -94,7 +94,7 @@ namespace Tests.UserCom
             }
 
             [Test, CustomAutoData]
-            public async Task PaginatedResult_Next_returns_empty_paginatedResult_if_nextUrl_from_userCom_throws_404(
+            public async Task PaginatedResultNext_returns_empty_paginatedResult_if_nextUrl_from_userCom_throws_404(
                 Mock<HttpMessageHandler> handler,
                 string account)
             {
