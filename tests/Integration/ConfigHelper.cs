@@ -5,7 +5,7 @@ using UserCom.Authentication;
 
 namespace Integration
 {
-    public class ConfigHelper
+    public static class ConfigHelper
     {
         public static IConfigurationRoot GetIConfigurationRoot(string outputPath)
         {
