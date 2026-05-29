@@ -8,7 +8,7 @@ namespace UserCom
     {
         private const string apiUrl = "https://{0}.user.com/api/public/";
 
-        public UserComAuthenticator(string account) : base()
+        public UserComAuthenticator(string account)
         {
             if (account == null)
             {
